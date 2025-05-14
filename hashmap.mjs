@@ -114,7 +114,19 @@ class HashMap {
     
 
     entries() {
+        let allPairs = [];
 
+        for (let i = 0; i < this.storage.length; i++) {
+            if (this.storage[i]){
+                let currentNode = this.storage[i].head;
+                while(currentNode != null){
+                    allPairs.push({key: currentNode.value[0], value: currentNode.value[1]});
+                    currentNode = currentNode.next;
+                }
+            }
+        }
+
+        return allPairs
     }
 
     view() {
@@ -140,4 +152,4 @@ test.set('kite', 'pink');
 test.set('lion', 'yellow');
 test.set('lion', 'golden')
 
-console.log(test.values());
+console.log(test.entries());
