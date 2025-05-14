@@ -29,7 +29,14 @@ class HashMap {
         if (bucket < 0 || bucket >= this.storage.length) {
             throw new Error("Trying to access index out of bounds");
         }
-        this.storage[bucket] = value;
+
+        if (!this.storage[bucket]) {
+            let newList = new LinkedList();
+            newList.append(value);
+            this.storage[bucket] = newList;
+        } else {
+            console.log('else reached');
+        }
     }
 
     view() {
@@ -42,4 +49,5 @@ const testHash = new HashMap(1, 16);
 // console.log(testHash.hash("test"));
 testHash.set('test', 'set to this');
 testHash.set('another one', 'new test value');
+testHash.set('test', 'collision');
 testHash.view();
