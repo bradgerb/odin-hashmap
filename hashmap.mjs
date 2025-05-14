@@ -32,15 +32,25 @@ class HashMap {
 
         if (!this.storage[bucket]) {
             let newList = new LinkedList();
-            newList.append(value);
+            newList.append([key, value]);
             this.storage[bucket] = newList;
         } else {
-            console.log('else reached');
+            let testKey = this.storage[bucket];
+            let currentNode = testKey.head;
+
+            for (let i = 0; i < testKey.length; i++){
+                if (currentNode.value[0] === key){
+                    currentNode.value[1] = value;
+                } else {
+                    currentNode = currentNode.next;
+                }
+            }
         }
     }
 
     view() {
         console.table(this.storage);
+        console.table(this.storage[2]);
     }
 }
 
