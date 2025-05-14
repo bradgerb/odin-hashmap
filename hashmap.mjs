@@ -74,7 +74,26 @@ class HashMap {
     }
 
     has(key) {
+        let bucket = this.hash(key);
+        if (bucket < 0 || bucket >= this.storage.length) {
+            throw new Error("Trying to access index out of bounds");
+        }
 
+        if(this.storage[bucket]) {
+            let currentNode = this.storage[bucket].head;
+
+            for (let i = 0; i < this.storage[bucket].length; i++){
+                if (currentNode.value[0] === key) {
+                    return true;
+                } else if (currentNode.next === null) {
+                    return false
+                } else {
+                    currentNode = currentNode.next;
+                }
+            }
+        } else {
+            return false
+        }
     }
 
     remove(key) {
@@ -146,15 +165,9 @@ class HashMap {
 
         return allPairs
     }
-
-    // view() {
-    //     console.table(this.storage);
-    // }
 }
 
 const test = new HashMap();
-
-// test.view;
 
 test.set('apple', 'red');
 test.set('banana', 'yellow');
@@ -169,5 +182,6 @@ test.set('jacket', 'blue');
 test.set('kite', 'pink');
 test.set('lion', 'golden')
 
-console.log(test.get('apple'));
-console.log(test.get('nope'));
+console.log(test.has('apple'));
+console.log(test.has('nope'));
+
