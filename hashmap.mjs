@@ -9,7 +9,8 @@ class HashMap {
     constructor (loadFactor, capacity) {
     this.loadFactor = loadFactor;
     this.capacity = capacity;
-    this.storage = [];        
+    this.storage = [];
+    this.storage.length = capacity;        
     }
 
     hash(key) {
@@ -25,6 +26,9 @@ class HashMap {
 
     set(key, value) {
         let bucket = this.hash(key);
+        if (bucket < 0 || bucket >= this.storage.length) {
+            throw new Error("Trying to access index out of bounds");
+        }
         this.storage[bucket] = value;
     }
 
