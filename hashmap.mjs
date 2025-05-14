@@ -120,7 +120,7 @@ class HashMap {
             if (this.storage[i]){
                 let currentNode = this.storage[i].head;
                 while(currentNode != null){
-                    allPairs.push({key: currentNode.value[0], value: currentNode.value[1]});
+                    allPairs.push([currentNode.value[0], currentNode.value[1]]);
                     currentNode = currentNode.next;
                 }
             }
