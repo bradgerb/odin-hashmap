@@ -75,7 +75,9 @@ class HashMap {
     }
 
     clear() {
-
+        for (let i = 0; i < this.storage.length; i++) {
+            this.storage[i] = null;
+        }
     }
 
     keys() {
@@ -97,6 +99,8 @@ class HashMap {
 
 const test = new HashMap();
 
+// test.view;
+
 test.set('apple', 'red');
 test.set('banana', 'yellow');
 test.set('carrot', 'orange');
@@ -111,5 +115,8 @@ test.set('kite', 'pink');
 test.set('lion', 'yellow');
 test.set('lion', 'golden')
 
-// test.view();
-console.log(test.length());
+test.view();
+test.clear();
+test.view();
+test.set('lion', 'golden')
+test.view();
