@@ -23,17 +23,19 @@ class HashMap {
         return hashCode;
     }
 
-    // set(key, value) {
+    set(key, value) {
+        let bucket = this.hash(key);
+        this.storage[bucket] = value;
+    }
 
-    // }
+    view() {
+        console.table(this.storage);
+    }
 }
 
 const testHash = new HashMap(1, 16);
 
-console.log(testHash.hash("test"));
-
-
-const testList = new LinkedList();
-
-testList.append("turtle");
-console.log(testList.toString());
+// console.log(testHash.hash("test"));
+testHash.set('test', 'set to this');
+testHash.set('another one', 'new test value');
+testHash.view();
