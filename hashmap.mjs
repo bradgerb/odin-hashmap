@@ -81,7 +81,19 @@ class HashMap {
     }
 
     keys() {
+        let allKeys = [];
 
+        for (let i = 0; i < this.storage.length; i++) {
+            if (this.storage[i]){
+                let currentNode = this.storage[i].head;
+                while(currentNode != null){
+                    allKeys.push(currentNode.value[0]);
+                    currentNode = currentNode.next;
+                }
+            }
+        }
+
+        return allKeys
     }
 
     values() {
@@ -115,8 +127,4 @@ test.set('kite', 'pink');
 test.set('lion', 'yellow');
 test.set('lion', 'golden')
 
-test.view();
-test.clear();
-test.view();
-test.set('lion', 'golden')
-test.view();
+console.log(test.keys());
