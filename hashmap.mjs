@@ -35,12 +35,14 @@ class HashMap {
             newList.append([key, value]);
             this.storage[bucket] = newList;
         } else {
-            let testKey = this.storage[bucket];
-            let currentNode = testKey.head;
+            let currentNode = this.storage[bucket].head;
 
-            for (let i = 0; i < testKey.length; i++){
+            for (let i = 0; i < this.storage[bucket].length; i++){
                 if (currentNode.value[0] === key){
                     currentNode.value[1] = value;
+                    break
+                } else if (currentNode.next === null){
+                    this.storage[bucket].append([key, value]);
                 } else {
                     currentNode = currentNode.next;
                 }
@@ -50,14 +52,23 @@ class HashMap {
 
     view() {
         console.table(this.storage);
-        console.table(this.storage[2]);
     }
 }
 
-const testHash = new HashMap(1, 16);
+const test = new HashMap(1, 16);
 
-// console.log(testHash.hash("test"));
-testHash.set('test', 'set to this');
-testHash.set('another one', 'new test value');
-testHash.set('test', 'collision');
-testHash.view();
+test.set('apple', 'red');
+test.set('banana', 'yellow');
+test.set('carrot', 'orange');
+test.set('dog', 'brown');
+test.set('elephant', 'gray');
+test.set('frog', 'green');
+test.set('grape', 'purple');
+test.set('hat', 'black');
+test.set('ice cream', 'white');
+test.set('jacket', 'blue');
+test.set('kite', 'pink');
+test.set('lion', 'yellow');
+test.set('lion', 'golden')
+
+test.view();
