@@ -50,6 +50,46 @@ class HashMap {
         }
     }
 
+    get(key) {
+
+    }
+
+    has(key) {
+
+    }
+
+    remove(key) {
+
+    }
+
+    length() {
+        let hashLength = 0;
+
+        for(let i = 0; i < this.storage.length; i++){
+            if (this.storage[i]){
+                hashLength += this.storage[i].length;
+            }
+        }
+
+        return hashLength
+    }
+
+    clear() {
+
+    }
+
+    keys() {
+
+    }
+
+    values() {
+
+    }
+
+    entries() {
+
+    }
+
     view() {
         console.table(this.storage);
     }
@@ -71,4 +111,5 @@ test.set('kite', 'pink');
 test.set('lion', 'yellow');
 test.set('lion', 'golden')
 
-test.view();
+// test.view();
+console.log(test.length());
