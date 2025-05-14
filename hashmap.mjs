@@ -6,11 +6,11 @@ import LinkedList from "./linkedList.mjs";
 // }
 
 class HashMap {
-    constructor (loadFactor, capacity) {
-    this.loadFactor = loadFactor;
-    this.capacity = capacity;
+    constructor () {
+    this.loadFactor = 1;
+    this.capacity = 16;
     this.storage = [];
-    this.storage.length = capacity;        
+    this.storage.length = this.capacity;        
     }
 
     hash(key) {
@@ -55,7 +55,7 @@ class HashMap {
     }
 }
 
-const test = new HashMap(1, 16);
+const test = new HashMap();
 
 test.set('apple', 'red');
 test.set('banana', 'yellow');
