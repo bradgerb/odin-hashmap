@@ -102,26 +102,29 @@ class HashMap {
             throw new Error("Trying to access index out of bounds");
         }
 
-        if(this.storage[bucket]) {
-            let currentNode = this.storage[bucket].head;
-
-            while(currentNode != null) {
-                if (currentNode.value[0] === key) {
-                    // if (){
-
-                    // } else {
-                    //     currentNode = currentNode.next;
-                    // }
-                    return true;
-                } else if (currentNode.next === null) {
-                    return false
-                } else {
-                    currentNode = currentNode.next;
-                }
-            }
-        } else {
-            return false
+        if(!this.storage[bucket]) {
+            return false;
         }
+
+        if (this.storage[bucket].head.value[0] === key) {
+            this.storage[bucket].head = this.storage[bucket].head.next;
+            this.storage[bucket].length--;
+            return true
+        }
+
+        let previousNode = this.storage[bucket].head;
+        let currentNode = this.storage[bucket].head.next;
+        
+        while (currentNode != null) {
+            if (currentNode.value[0] === key) {
+                previousNode.next = currentNode.next;
+                this.storage[bucket].length--;
+                return true
+            }
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+        return false
     }
 
     length() {
@@ -207,7 +210,10 @@ test.set('kite', 'pink');
 test.set('lion', 'golden')
 
 console.log(test.length());
-console.log(test.remove('apple'));
+console.log(test.entries());
+console.log(test.remove('hat'));
 console.log(test.remove('grape'));
+console.log(test.remove('apple'));
 console.log(test.remove('nope'));
 console.log(test.length());
+console.log(test.entries());
