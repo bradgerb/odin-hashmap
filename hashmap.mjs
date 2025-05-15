@@ -37,7 +37,7 @@ class HashMap {
         } else {
             let currentNode = this.storage[bucket].head;
 
-            for (let i = 0; i < this.storage[bucket].length; i++){
+            while(currentNode != null) {
                 if (currentNode.value[0] === key){
                     currentNode.value[1] = value;
                     break
@@ -59,7 +59,7 @@ class HashMap {
         if(this.storage[bucket]) {
             let currentNode = this.storage[bucket].head;
 
-            for (let i = 0; i < this.storage[bucket].length; i++){
+            while(currentNode != null) {
                 if (currentNode.value[0] === key) {
                     return currentNode.value[1];
                 } else if (currentNode.next === null) {
@@ -82,7 +82,7 @@ class HashMap {
         if(this.storage[bucket]) {
             let currentNode = this.storage[bucket].head;
 
-            for (let i = 0; i < this.storage[bucket].length; i++){
+            while(currentNode != null) {
                 if (currentNode.value[0] === key) {
                     return true;
                 } else if (currentNode.next === null) {
@@ -105,13 +105,13 @@ class HashMap {
         if(this.storage[bucket]) {
             let currentNode = this.storage[bucket].head;
 
-            for (let i = 0; i < this.storage[bucket].length; i++){
+            while(currentNode != null) {
                 if (currentNode.value[0] === key) {
-                    if (this.storage[bucket].length === 1){
-                        this.storage[bucket] = null
-                    } else {
-                        
-                    }
+                    // if (){
+
+                    // } else {
+                    //     currentNode = currentNode.next;
+                    // }
                     return true;
                 } else if (currentNode.next === null) {
                     return false
@@ -206,6 +206,8 @@ test.set('jacket', 'blue');
 test.set('kite', 'pink');
 test.set('lion', 'golden')
 
+console.log(test.length());
 console.log(test.remove('apple'));
+console.log(test.remove('grape'));
 console.log(test.remove('nope'));
-console.log(test.entries());
+console.log(test.length());
