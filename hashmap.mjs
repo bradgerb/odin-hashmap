@@ -1,10 +1,5 @@
 import LinkedList from "./linkedList.mjs";
 
-//Use when accessing bucket through an index
-// if (index < 0 || index >= buckets.length) {
-//     throw new Error("Trying to access index out of bounds");
-// }
-
 class HashMap {
     constructor () {
     this.loadFactor = 1;
@@ -194,26 +189,4 @@ class HashMap {
     }
 }
 
-const test = new HashMap();
-
-test.set('apple', 'red');
-test.set('banana', 'yellow');
-test.set('carrot', 'orange');
-test.set('dog', 'brown');
-test.set('elephant', 'gray');
-test.set('frog', 'green');
-test.set('grape', 'purple');
-test.set('hat', 'black');
-test.set('ice cream', 'white');
-test.set('jacket', 'blue');
-test.set('kite', 'pink');
-test.set('lion', 'golden')
-
-console.log(test.length());
-console.log(test.entries());
-console.log(test.remove('hat'));
-console.log(test.remove('grape'));
-console.log(test.remove('apple'));
-console.log(test.remove('nope'));
-console.log(test.length());
-console.log(test.entries());
+export default HashMap
