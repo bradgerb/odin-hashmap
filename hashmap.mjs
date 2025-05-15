@@ -97,7 +97,31 @@ class HashMap {
     }
 
     remove(key) {
+        let bucket = this.hash(key);
+        if (bucket < 0 || bucket >= this.storage.length) {
+            throw new Error("Trying to access index out of bounds");
+        }
 
+        if(this.storage[bucket]) {
+            let currentNode = this.storage[bucket].head;
+
+            for (let i = 0; i < this.storage[bucket].length; i++){
+                if (currentNode.value[0] === key) {
+                    if (this.storage[bucket].length === 1){
+                        this.storage[bucket] = null
+                    } else {
+                        
+                    }
+                    return true;
+                } else if (currentNode.next === null) {
+                    return false
+                } else {
+                    currentNode = currentNode.next;
+                }
+            }
+        } else {
+            return false
+        }
     }
 
     length() {
@@ -182,6 +206,6 @@ test.set('jacket', 'blue');
 test.set('kite', 'pink');
 test.set('lion', 'golden')
 
-console.log(test.has('apple'));
-console.log(test.has('nope'));
-
+console.log(test.remove('apple'));
+console.log(test.remove('nope'));
+console.log(test.entries());
