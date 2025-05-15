@@ -2,10 +2,10 @@ import LinkedList from "./linkedList.mjs";
 
 class HashMap {
     constructor () {
-    this.loadFactor = 1;
+    this.loadFactor = .75;
     this.capacity = 16;
     this.storage = [];
-    this.storage.length = this.capacity;        
+    this.storage.length = this.capacity;
     }
 
     hash(key) {
@@ -43,6 +43,7 @@ class HashMap {
                 }
             }
         }
+        this.growBuckets();
     }
 
     get(key) {
@@ -186,6 +187,17 @@ class HashMap {
         }
 
         return allPairs
+    }
+
+    growBuckets() {
+        if (this.length() >= (this.storage.length * this.loadFactor)) {
+            this.capacity *= 2;
+            this.storage.length = this.capacity;
+        }
+    }
+
+    view() {
+        console.table(this.storage);
     }
 }
 
