@@ -13,4 +13,8 @@ test.set('hat', 'black');
 test.set('ice cream', 'white');
 test.set('jacket', 'blue');
 test.set('kite', 'pink');
-test.set('lion', 'golden')
+test.set('lion', 'golden');
+
+test.view();
+test.set('moon', 'silver');
+test.view();
