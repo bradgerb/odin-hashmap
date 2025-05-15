@@ -190,9 +190,15 @@ class HashMap {
     }
 
     growBuckets() {
-        if (this.length() >= (this.storage.length * this.loadFactor)) {
+        if (this.length() > (this.storage.length * this.loadFactor)) {
             this.capacity *= 2;
             this.storage.length = this.capacity;
+
+            let allPairs = this.entries();
+            this.clear();
+            for (let i = 0; i < allPairs.length; i++){
+                this.set(allPairs[i][0], allPairs[i][1]);
+            }
         }
     }
 
